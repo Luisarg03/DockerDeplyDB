@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  SQLServer:
+    image: microsoft/mssql-server-windows-developer
+    container_name: SQLServer_SASCampaign
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Password_01
+      - attach_dbs=[{'dbName':'SASCampaign','dbFiles':['C:\\SQLData\\SASCampaign.mdf','C:\\SQLData\\SASCampaign_log.ldf']}]
+    ports:
+      - '1433:1433'
+    volumes:
+      - C:\Docker\SQLServerCampaign\volume:C:\SQLData
